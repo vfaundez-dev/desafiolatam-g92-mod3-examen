@@ -37,7 +37,7 @@ body::before {
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border: 1px solid rgba(255, 255, 255, 0.15);
-    max-width: 520px;
+    max-width: 620px;
     width: 90%;
     position: relative;
     transition: box-shadow 0.3s ease;
@@ -293,7 +293,7 @@ body::before {
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 12px;
-    padding: 1.5rem;
+    padding: 1rem;
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     transition: all 0.3s ease;
@@ -304,25 +304,24 @@ body::before {
     justify-content: center;
     background: rgba(59, 130, 246, 0.08);
     border-color: rgba(59, 130, 246, 0.2);
-    box-shadow: 0 4px 16px rgba(59, 130, 246, 0.1);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.1);
 }
 
-.result-amount {
+.result-amount h4 {
     font-size: 2rem;
     font-weight: 700;
     color: #ff8c42;
     text-shadow:
-        0 0 10px rgba(255, 140, 66, 0.3),
-        0 0 20px rgba(255, 140, 66, 0.2),
-        0 0 30px rgba(255, 140, 66, 0.1);
-    margin-bottom: 0.5rem;
+        0 0 8px rgba(255, 140, 66, 0.3),
+        0 0 18px rgba(255, 140, 66, 0.2);
+    margin-bottom: 0.2rem;
     letter-spacing: -0.02em;
 }
 
 .result-label {
     font-size: 0.9rem;
     color: rgba(255, 255, 255, 0.7);
-    font-weight: 500;
+    font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.05em;
 }
