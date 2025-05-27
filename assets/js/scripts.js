@@ -18,21 +18,25 @@ formDivisas.addEventListener('submit', (e) => {
     resultFetch.then( data => {
         
         resultDiv.classList.remove('loading');
-        resultAmountDiv.classList.remove('d-none');
-
-        const currencyData = data;
-        const currentValue = parseFloat( currencyData[0]?.valor ) || 0;
         
-        if (!currentValue && currentValue === 0) {
+        const currencyData = data;
+        
+        if (!currencyData || currencyData.length === 0) {
             alert('No se encontraron datos para el valor seleccionado.');
             return;
         }
         
-        const totalAmount = calculateTotalAmount(amount.value, currentValue);
-        // Metodos para renderizar en DOM
-        renderCurrentResult(totalAmount);
+        resultAmountDiv.classList.remove('d-none');
+        // Transformar objeto, parseando fechas en formato YYYY-MM-DD
+        // y devolviendo solo los primeros 10 elementos
+        const parsedCurrencyData = parseCurrencyObject(currencyData);
+        // Obtenemos el valor actual de la divisa
+        const currentCurrencyValue = parsedCurrencyData[0].valor;
+        // Calculamos el monto total de la divisa en CLP
+        const currentTotalValue = calculateTotalAmount(amount.value, currentCurrencyValue);
 
-        console.log( currencyData );
+        // Imprimir en pantalla el resultado del monto actual
+        renderCurrentTotalValue(currentTotalValue);
 
 
     });
@@ -59,13 +63,21 @@ const fetchCurrency = async (currency) => {
 
 }
 
+// Transformar objeto obtenido en Mi Indicador
+const parseCurrencyObject = (currencyData) => {
+    return currencyData.slice(0, 10).map( currency => ({
+        fecha: new Date(currency.fecha).toISOString().split('T')[0],
+        valor: currency.valor.toFixed(2)
+    }));
+}
+
 // Calcular monto total de la divisa
 const calculateTotalAmount = (amount, currencyValue) => {
     return (amount * currencyValue).toFixed(2) || 0;
 }
 
-// Imprimir en pantalla el resultado actual
-const renderCurrentResult = (totalAmount) => {
+// Imprimir en pantalla el resultado  actual
+const renderCurrentTotalValue = (totalAmount) => {
     const resultValue = document.querySelector('.result-value');
     const formatedValue = new Intl.NumberFormat('es-CL', {
         style: 'currency',
