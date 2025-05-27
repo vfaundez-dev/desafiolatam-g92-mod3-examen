@@ -1,12 +1,15 @@
 const amount = document.getElementById("amount");
 const currency = document.getElementById("currency");
+const btnConvert = document.querySelector('.btn-convert');
 const formDivisas = document.getElementById("formDivisas");
 const resultDiv = document.getElementById('result');
 const resultAmountDiv = document.querySelector('.result-amount');
+let currencyChart = null;
 
 
 formDivisas.addEventListener('submit', (e) => {
     e.preventDefault();
+    btnConvert.disabled = true;
     
     
     if ( amount.value === '' || isNaN(parseFloat(amount.value)) ) {
@@ -18,6 +21,7 @@ formDivisas.addEventListener('submit', (e) => {
     resultFetch.then( data => {
         
         resultDiv.classList.remove('loading');
+        btnConvert.disabled = false;
         
         const currencyData = data;
         
@@ -37,8 +41,12 @@ formDivisas.addEventListener('submit', (e) => {
 
         // Imprimir en pantalla el resultado del monto actual
         renderCurrentTotalValue(currentTotalValue);
+        // Generar grafico
+        renderCurrencyChart(parsedCurrencyData);
 
-
+    }).catch( error => {
+        console.error('Error en solicitud a servidor:', error);
+        alert('Error solicitando datos. Por favor, inténtalo de nuevo.');
     });
 
 });
@@ -73,15 +81,62 @@ const parseCurrencyObject = (currencyData) => {
 
 // Calcular monto total de la divisa
 const calculateTotalAmount = (amount, currencyValue) => {
-    return (amount * currencyValue).toFixed(2) || 0;
+    return currencyValue == 0 ? 0 : (amount / currencyValue).toFixed(2);
 }
 
 // Imprimir en pantalla el resultado  actual
 const renderCurrentTotalValue = (totalAmount) => {
     const resultValue = document.querySelector('.result-value');
-    const formatedValue = new Intl.NumberFormat('es-CL', {
-        style: 'currency',
-        currency: 'CLP',
-    }).format(totalAmount);
-    resultValue.innerHTML = formatedValue;
+    const formatedValue = new Intl.NumberFormat('es-ES').format(totalAmount);
+    resultValue.innerHTML = '$ ' + formatedValue;
+}
+
+// Generar Grafico
+const renderCurrencyChart = (currencyData) => {
+    const ctx = document.getElementById('currencyChart').getContext('2d');
+    // Si ya existe un gráfico generado, se destruye
+    if (currencyChart) {
+        currencyChart.destroy();
+    }
+    
+    // Ordenar objeto por fechas de forma ascendente
+    currencyData.sort( (a, b) => new Date(a.fecha) - new Date(b.fecha) )
+    // Generar arrays de etiquetas y valores para grafico
+    const labels = currencyData.map(data => data.fecha);
+    const values = currencyData.map(data => data.valor);
+
+    currencyChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: `Valor de ${currency.value}`,
+                data: values,
+                borderColor: 'rgba(75, 192, 192, 1)',
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                pointBackgroundColor: 'rgba(75, 192, 192, 1)',
+                pointStyle: 'rect',
+                pointRadius: 6,
+                pointHoverRadius: 8,
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            scales: {
+                x: {
+                    ticks: {
+                        color: '#B4EBE6'
+                    }
+                },
+                y: {
+                    ticks: {
+                        color: '#B4EBE6'
+                    }
+                }
+            }
+        }
+    });
+
 }

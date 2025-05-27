@@ -37,7 +37,7 @@ body::before {
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border: 1px solid rgba(255, 255, 255, 0.15);
-    max-width: 620px;
+    max-width: 680px;
     width: 90%;
     position: relative;
     transition: box-shadow 0.3s ease;
@@ -70,7 +70,7 @@ body::before {
 
 .header-icon {
     background: linear-gradient(135deg, #1e3a8a, #3b82f6);
-    width: 60px;
+    width: 80px;
     height: 60px;
     border-radius: 16px;
     display: flex;
@@ -91,7 +91,7 @@ body::before {
 
 .header-icon i {
     color: #ffffff;
-    font-size: 1.5rem;
+    font-size: 2.4rem;
 }
 
 .glass-card .card-title {
@@ -334,7 +334,7 @@ body::before {
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     margin-top: 1.5rem;
-    height: 300px;
+    height: 380px;
     position: relative;
 }
 
