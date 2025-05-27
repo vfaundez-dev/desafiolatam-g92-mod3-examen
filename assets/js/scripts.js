@@ -20,11 +20,7 @@ formDivisas.addEventListener('submit', (e) => {
     const resultFetch = fetchCurrency(currency.value);
     resultFetch.then( data => {
         
-        resultDiv.classList.remove('loading');
-        btnConvert.disabled = false;
-        
         const currencyData = data;
-        
         if (!currencyData || currencyData.length === 0) {
             alert('No se encontraron datos para el valor seleccionado.');
             return;
@@ -47,16 +43,19 @@ formDivisas.addEventListener('submit', (e) => {
     }).catch( error => {
         console.error('Error en solicitud a servidor:', error);
         alert('Error solicitando datos. Por favor, inténtalo de nuevo.');
-    });
+    }).finally( () => {
+        btnConvert.disabled = false;
+        resultDiv.classList.remove('loading');
+    } );
 
 });
 
 // Obtener datos desde API Mi Indicador
 const fetchCurrency = async (currency) => {
-    const url = `https://mindicador.cl/api/${currency}`;
-
     try {
-
+        
+        const url = `https://mindicador.cl/api/${currency}`;
+        
         resultDiv.classList.add('loading');
         resultAmountDiv.classList.add('d-none');
 
@@ -66,7 +65,7 @@ const fetchCurrency = async (currency) => {
         
     } catch (error) {
         console.error('Error en solicitud a servidor:', error);
-        alert('Error solicitando datos. Por favor, inténtalo de nuevo.');
+        throw new Error('Error al obtener datos de la API');
     }
 
 }
