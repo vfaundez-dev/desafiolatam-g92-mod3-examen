@@ -1,0 +1,450 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    font-family: "Montserrat", sans-serif;
+    color: #F7F7F7;
+}
+
+body {
+    background: linear-gradient(135deg, #0f1419 0%, #1a1f2e 50%, #0d1117 100%);
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        radial-gradient(circle at 20% 80%, rgba(30, 58, 138, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(37, 99, 235, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 20px;
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.4),
+        0 2px 16px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    max-width: 520px;
+    width: 90%;
+    position: relative;
+    transition: box-shadow 0.3s ease;
+}
+
+.glass-card:hover {
+    box-shadow:
+        0 12px 40px rgba(0, 0, 0, 0.5),
+        0 4px 20px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.glass-card .card-header {
+    background: rgba(255, 255, 255, 0.03);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 20px 20px 0 0 !important;
+    padding: 2rem 2rem 1.5rem;
+    position: relative;
+}
+
+.glass-card .card-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+}
+
+.header-icon {
+    background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+    width: 60px;
+    height: 60px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    box-shadow:
+        0 4px 16px rgba(59, 130, 246, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    transition: all 0.3s ease;
+}
+
+.header-icon:hover {
+    box-shadow:
+        0 6px 20px rgba(59, 130, 246, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.header-icon i {
+    color: #ffffff;
+    font-size: 1.5rem;
+}
+
+.glass-card .card-title {
+    font-weight: 600;
+    margin-bottom: 0;
+    color: #FFFFFF;
+    font-size: 1.5rem;
+    text-align: center;
+    letter-spacing: -0.02em;
+}
+
+.card-body {
+    padding: 2rem !important;
+}
+
+.form-label {
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 0.75rem;
+    font-size: 0.95rem;
+}
+
+.form-control {
+    background: rgba(255, 255, 255, 0.04) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    border-radius: 12px !important;
+    color: #ffffff !important;
+    padding: 0.875rem 1rem !important;
+    font-size: 1rem !important;
+    transition: all 0.3s ease !important;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.form-control:focus {
+    background: rgba(255, 255, 255, 0.06) !important;
+    border-color: rgba(59, 130, 246, 0.5) !important;
+    box-shadow:
+        0 0 0 3px rgba(59, 130, 246, 0.12),
+        0 4px 12px rgba(0, 0, 0, 0.15) !important;
+    color: #ffffff !important;
+}
+
+.form-control:hover {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+.form-control::placeholder {
+    color: rgba(255, 255, 255, 0.4) !important;
+}
+
+.select-wrapper {
+    position: relative;
+}
+
+.form-select {
+    background: rgba(255, 255, 255, 0.04) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    border-radius: 12px !important;
+    color: #ffffff !important;
+    padding: 0.875rem 3rem 0.875rem 1rem !important;
+    font-size: 1rem !important;
+    transition: all 0.3s ease !important;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+    background-image: none !important;
+}
+
+.form-select:focus {
+    background: rgba(255, 255, 255, 0.06) !important;
+    border-color: rgba(59, 130, 246, 0.5) !important;
+    box-shadow:
+        0 0 0 3px rgba(59, 130, 246, 0.12),
+        0 4px 12px rgba(0, 0, 0, 0.15) !important;
+    color: #ffffff !important;
+    outline: none !important;
+}
+
+.form-select:hover {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+.select-wrapper::after {
+    content: '\f078';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: rgba(255, 255, 255, 0.7);
+    transition: all 0.3s ease;
+    font-size: 0.8rem;
+}
+
+.form-select:focus+.select-wrapper::after,
+.select-wrapper:has(.form-select:focus)::after {
+    color: #3b82f6;
+}
+
+.form-select option {
+    background: rgba(26, 31, 46, 0.98) !important;
+    color: #ffffff !important;
+    padding: 0.75rem 1rem !important;
+    border: none !important;
+    border-radius: 16px !important;
+    font-size: 1rem !important;
+    font-weight: 500 !important;
+    transition: all 0.2s ease !important;
+}
+
+.form-select option:hover {
+    background: rgba(59, 130, 246, 0.2) !important;
+    color: #ffffff !important;
+}
+
+.form-select option:checked {
+    background: rgba(255, 255, 255, 0.3) !important;
+    color: #3b82f6 !important;
+    font-weight: 600 !important;
+}
+
+.form-select::-ms-expand {
+    display: none;
+}
+
+.form-select:focus {
+    background: rgba(255, 255, 255, 0.06) !important;
+}
+
+.form-select option:disabled {
+    background: rgba(255, 255, 255, 0.05) !important;
+    color: rgba(255, 255, 255, 0.3) !important;
+}
+
+.btn-convert {
+    background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%) !important;
+    border: 1px solid rgba(59, 130, 246, 0.3) !important;
+    border-radius: 12px !important;
+    padding: 0.875rem 2rem !important;
+    font-weight: 600 !important;
+    font-size: 1rem !important;
+    color: #ffffff !important;
+    transition: all 0.3s ease !important;
+    position: relative;
+    overflow: hidden;
+    box-shadow:
+        0 4px 16px rgba(59, 130, 246, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.btn-convert::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.btn-convert:hover {
+    box-shadow:
+        0 6px 20px rgba(59, 130, 246, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+    background: linear-gradient(135deg, #2563eb 0%, #60a5fa 100%) !important;
+    border-color: rgba(59, 130, 246, 0.4) !important;
+}
+
+.btn-convert:hover::before {
+    left: 100%;
+}
+
+.btn-convert:active {
+    background: linear-gradient(135deg, #1d4ed8 0%, #3b82f6 100%) !important;
+    box-shadow:
+        0 2px 8px rgba(59, 130, 246, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+}
+
+.btn-convert i {
+    margin-right: 0.5rem;
+    transition: transform 0.3s ease;
+}
+
+.btn-convert:hover i {
+    transform: rotate(180deg);
+}
+
+#result {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 1.5rem;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: all 0.3s ease;
+    min-height: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(59, 130, 246, 0.08);
+    border-color: rgba(59, 130, 246, 0.2);
+    box-shadow: 0 4px 16px rgba(59, 130, 246, 0.1);
+}
+
+.result-amount {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #ff8c42;
+    text-shadow:
+        0 0 10px rgba(255, 140, 66, 0.3),
+        0 0 20px rgba(255, 140, 66, 0.2),
+        0 0 30px rgba(255, 140, 66, 0.1);
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.02em;
+}
+
+.result-label {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.chart-container {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 1.5rem;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    margin-top: 1.5rem;
+    height: 300px;
+    position: relative;
+}
+
+.chart-title {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.mb-3 {
+    margin-bottom: 1.5rem !important;
+}
+
+.footer {
+    margin-top: 2rem;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+.footer-text {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+}
+
+.footer-link {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.footer-link:hover {
+    color: #3b82f6;
+    text-decoration: none;
+}
+
+.footer-link i {
+    font-size: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.footer-link:hover i {
+    transform: scale(1.1);
+}
+
+@media (max-width: 576px) {
+    .glass-card {
+        width: 95%;
+        margin: 1rem;
+    }
+
+    .card-body {
+        padding: 1.5rem !important;
+    }
+
+    .glass-card .card-header {
+        padding: 1.5rem 1.5rem 1rem;
+    }
+
+    .glass-card .card-title {
+        font-size: 1.25rem;
+    }
+
+    .header-icon {
+        width: 50px;
+        height: 50px;
+    }
+
+    .header-icon i {
+        font-size: 1.25rem;
+    }
+
+    .result-amount {
+        font-size: 1.5rem;
+    }
+
+    .chart-container {
+        height: 250px;
+        padding: 1rem;
+    }
+}
+
+.loading {
+    position: relative;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border: 4px solid rgba(255, 255, 255, 0.2);
+    border-top: 2px solid #F7F7F7;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

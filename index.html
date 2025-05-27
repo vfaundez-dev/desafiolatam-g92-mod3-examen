@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Examen - Conversor de Moneda - Modulo JS</title>
+	<!-- FontAwesome -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+	<!-- Bootstrap 5 CSS -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Styles -->
+	<link rel="stylesheet" href="./assets/css/styles.css" />
+</head>
+
+<body>
+	<!-- Container -->
+	<div class="container-fluid d-flex align-items-center justify-content-center min-vh-100">
+		<!-- Card -->
+		<div class="card glass-card">
+
+			<!-- Card Header -->
+			<div class="card-header">
+				<div class="header-icon">
+					<i class="fa-solid fa-money-bill-transfer"></i>
+				</div>
+				<h4 class="card-title">
+					Conversor de Moneda Nacional
+				</h4>
+			</div>
+			<!-- Card Header -->
+
+			<!-- Card Body -->
+			<div class="card-body">
+				<!-- Formulario -->
+				<form id="formDivisas">
+
+					<div class="mb-3">
+						<label for="amount" class="form-label">Ingrese Monto en CLP</label>
+						<input id="amount" type="text" class="form-control form-control-lg" placeholder="Ejemplo: 10000" />
+					</div>
+
+					<div class="mb-3">
+						<label for="currency" class="form-label">Seleccione Moneda</label>
+						<div class="select-wrapper">
+							<select id="currency" class="form-select form-select-lg">
+								<option value="USD">💵 Dólar Estadounidense (USD)</option>
+								<option value="EUR">💶 Euro (EUR)</option>
+								<option value="GBP">💷 Libra Esterlina (GBP)</option>
+								<option value="JPY">💴 Yen Japonés (JPY)</option>
+								<option value="CAD">🍁 Dólar Canadiense (CAD)</option>
+								<option value="AUD">🇦🇺 Dólar Australiano (AUD)</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="mb-3">
+						<button type="submit" class="btn btn-convert btn-lg w-100">
+							<i class="fa-solid fa-rotate"></i> Convertir
+						</button>
+					</div>
+
+				</form>
+				<!-- Formulario -->
+
+				<!-- Resultado -->
+				<div id="result" class="text-center mt-4">
+					<div class="result-amount">$12.34 USD</div>
+					<div class="result-label">A la fecha actual</div>
+				</div>
+
+				<!-- Gráfico -->
+				<div class="chart-container">
+					<div class="chart-title">Tendencia de Cambio (Últimos 7 días)</div>
+					<canvas id="currencyChart"></canvas>
+				</div>
+				<!-- Gráfico -->
+			</div>
+			<!-- Card Body -->
+
+		</div>
+		<!-- Card -->
+	</div>
+	<!-- Container -->
+
+	<!-- Footer -->
+	<div class="footer">
+		<div class="footer-text">© 2024 Conversor de Moneda. Todos los derechos reservados.</div>
+		<a href="https://github.com" class="footer-link" target="_blank">
+			<i class="fab fa-github"></i>
+			Ver en GitHub
+		</a>
+	</div>
+
+	<!-- Bootstrap 5 JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js"></script>
+	<!-- Scripts -->
+	<script src="./assets/js/scripts.js"></script>
+</body>
+
+</html>
