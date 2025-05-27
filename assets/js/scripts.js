@@ -87,8 +87,10 @@ const calculateTotalAmount = (amount, currencyValue) => {
 // Imprimir en pantalla el resultado  actual
 const renderCurrentTotalValue = (totalAmount) => {
     const resultValue = document.querySelector('.result-value');
+    const resultLabel = document.querySelector('.result-label');
     const formatedValue = new Intl.NumberFormat('es-ES').format(totalAmount);
     resultValue.innerHTML = '$ ' + formatedValue;
+    resultLabel.innerHTML = `Al día ${ new Date().toLocaleDateString('es-ES') }`;
 }
 
 // Generar Grafico
@@ -112,9 +114,9 @@ const renderCurrencyChart = (currencyData) => {
             datasets: [{
                 label: `Valor de ${currency.value}`,
                 data: values,
-                borderColor: 'rgba(75, 192, 192, 1)',
-                backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                pointBackgroundColor: 'rgba(75, 192, 192, 1)',
+                borderColor: 'rgba(0, 143, 255, 1)',
+                backgroundColor: 'rgba(0, 143, 255, 0.1)',
+                pointBackgroundColor: 'rgba(0, 143, 255, 1)',
                 pointStyle: 'rect',
                 pointRadius: 6,
                 pointHoverRadius: 8,
@@ -124,15 +126,31 @@ const renderCurrencyChart = (currencyData) => {
         options: {
             responsive: true,
             maintainAspectRatio: true,
+            plugins: {
+                legend: {
+                    labels: {
+                        color: '#C2D2E9',
+                        font: {
+                            size: 14
+                        }
+                    },
+                },
+            },
             scales: {
                 x: {
                     ticks: {
-                        color: '#B4EBE6'
+                        color: '#8CB3F4'
+                    },
+                    grid: {
+                        color: 'rgba(255, 255, 255, 0.05)'
                     }
                 },
                 y: {
                     ticks: {
-                        color: '#B4EBE6'
+                        color: '#8CB3F4'
+                    },
+                    grid: {
+                        color: 'rgba(255, 255, 255, 0.05)'
                     }
                 }
             }
