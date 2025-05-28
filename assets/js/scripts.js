@@ -41,7 +41,6 @@ formDivisas.addEventListener('submit', (e) => {
         renderCurrencyChart(parsedCurrencyData);
 
     }).catch( error => {
-        console.error('Error en solicitud a servidor:', error);
         alert('Error solicitando datos. Por favor, inténtalo de nuevo.');
     }).finally( () => {
         btnConvert.disabled = false;
